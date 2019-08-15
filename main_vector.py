@@ -21,3 +21,11 @@ if __name__ == '__main__':
 
     print("+{}={}".format(vector, +vector))
     print("-{}={}".format(vector, -vector))
+
+    zero = Vector.zero(2)
+    print("zero 2 = {} ".format(zero))
+
+    norm_vec = Vector([3, 4])
+    print('norm({})  = {}'.format(norm_vec, norm_vec.norm()))
+
+    print('normalize({})  = {}   and  its  norm = {}'.format(norm_vec, norm_vec.normalize(),norm_vec.normalize().norm()))

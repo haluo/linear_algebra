@@ -6,11 +6,17 @@
 @desc:
 
 '''
-
+import math
+from ._global import EPSILON
 
 class Vector(object):
     def __init__(self, lst):
         self._values = list(lst)
+
+    @classmethod
+    def zero(cls, dim):
+        """零向量"""
+        return cls([0] * dim)
 
     def __str__(self):
         return "({})".format(",".join(str(i) for i in self))
@@ -55,3 +61,17 @@ class Vector(object):
     def __neg__(self):
         """取负"""
         return -1 * self
+
+    def __truediv__(self, k):
+        """除法"""
+        return self * (1 / k)
+
+    def norm(self):
+        """向量的模"""
+        return math.sqrt(sum(i ** 2 for i in self))
+
+    def normalize(self):
+        """单位向量"""
+        if self.norm() < EPSILON:
+            raise ZeroDivisionError('norm is zero')
+        return Vector(self._values) / self.norm()
