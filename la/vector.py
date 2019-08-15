@@ -18,6 +18,10 @@ class Vector(object):
     def __repr__(self):
         return "Vector({})".format(self._values)
 
+    def __getitem__(self, item):
+        """vec[i]"""
+        return self._values[item]
+
     def __len__(self):
         """长度"""
         return len(self._values)
